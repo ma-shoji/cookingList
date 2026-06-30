@@ -1,4 +1,4 @@
-const CACHE_NAME = 'cooking-list-cache-v3';
+const CACHE_NAME = 'cooking-list-cache-v4';
 const ASSETS = [
   './',
   './index.html',

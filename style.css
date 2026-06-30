@@ -177,6 +177,37 @@ body {
   color: #FFFFFF;
 }
 
+.selection-summary-bar {
+  display: flex;
+  gap: 8px;
+  padding: 6px 20px 4px;
+  margin: 0 -20px;
+}
+
+.sel-summary-item {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-muted);
+  padding: 3px 10px;
+  border-radius: 20px;
+  background-color: var(--tag-bg);
+  transition: all 0.25s ease;
+}
+
+.sel-summary-item strong {
+  font-weight: 700;
+}
+
+.main-summary.has-selection {
+  color: var(--primary);
+  background-color: rgba(255, 111, 97, 0.12);
+}
+
+.side-summary.has-selection {
+  color: var(--secondary);
+  background-color: rgba(58, 159, 136, 0.12);
+}
+
 .recipes-container {
   display: flex;
   flex-direction: column;

@@ -24,7 +24,13 @@ const DOM = {
   
   // Cooking view elements
   cookingRecipesList: document.getElementById('cooking-recipes-list'),
-  cookingListEmpty: document.getElementById('cooking-list-empty')
+  cookingListEmpty: document.getElementById('cooking-list-empty'),
+
+  // Home selection summary
+  homeMainCount: document.getElementById('home-main-count'),
+  homeSideCount: document.getElementById('home-side-count'),
+  homeMainSummary: document.getElementById('home-main-summary'),
+  homeSideSummary: document.getElementById('home-side-summary')
 };
 
 // --- Helper Functions ---
@@ -443,11 +449,23 @@ function renderCookingInstructions() {
   });
 }
 
+// Update home screen selection summary counts
+function updateHomeSelectionSummary() {
+  const mainCount = state.selectedDishes.filter(id => id.endsWith('-main')).length;
+  const sideCount = state.selectedDishes.filter(id => id.endsWith('-side')).length;
+
+  DOM.homeMainCount.textContent = mainCount;
+  DOM.homeSideCount.textContent = sideCount;
+  DOM.homeMainSummary.classList.toggle('has-selection', mainCount > 0);
+  DOM.homeSideSummary.classList.toggle('has-selection', sideCount > 0);
+}
+
 // Update all components in UI based on state
 function updateUI() {
   renderRecipes();
   updateShoppingList();
   renderCookingInstructions();
+  updateHomeSelectionSummary();
 }
 
 // --- Event Handlers & Navigation ---
