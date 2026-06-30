@@ -154,12 +154,34 @@
   <script src="recipes.js"></script>
   <script src="app.js"></script>
   <script>
-    // Service Worker Registration
+    // Service Worker Registration with Auto-Reload on Update
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('./sw.js')
-          .then(reg => console.log('Service Worker registered', reg))
+          .then(reg => {
+            console.log('Service Worker registered');
+            
+            // Check for updates
+            reg.addEventListener('updatefound', () => {
+              const newWorker = reg.installing;
+              newWorker.addEventListener('statechange', () => {
+                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                  console.log('New content available, reloading...');
+                  window.location.reload();
+                }
+              });
+            });
+          })
           .catch(err => console.error('Service Worker registration failed', err));
+      });
+      
+      // Reload when the active service worker changes (e.g. skipWaiting)
+      let refreshing = false;
+      navigator.serviceWorker.addEventListener('controllerchange', () => {
+        if (!refreshing) {
+          window.location.reload();
+          refreshing = true;
+        }
       });
     }
   </script>
