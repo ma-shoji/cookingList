@@ -1,0 +1,18 @@
+{
+  "name": "妊婦さん安心減塩レシピ＆買い物リスト",
+  "short_name": "クッキングリスト",
+  "description": "妊婦さん向け減塩・時短レシピの選択と買い物リスト自動生成アプリ",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#FFF5F0",
+  "theme_color": "#FF6F61",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
